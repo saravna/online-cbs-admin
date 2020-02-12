@@ -9,6 +9,7 @@ function AddProduct(props) {
     const [name,setName] = useState('')
     const [price,setPrice] = useState(0)
     const [file, setFile] = useState({})
+    const URL=process.env.NODE_ENV==="development"?"http://localhost:4000":"/backend";
 
     const handleProductAdd = async () => {
         const reg = /^-?[0-9]*(\.[0-9]*)?$/;
@@ -16,15 +17,15 @@ function AddProduct(props) {
         if(price.trim().length!==0 && name.trim().length!==0 && reg.test(price)){
             var formData = new FormData()
             formData.append('profile',file)
-            await axios.post("http://localhost:4000/profile",formData,{
+            await axios.post(URL+"/profile",formData,{
                 headers : { 'Content-Type' : 'multipart/form-data' }           
             })
             .then(response => {
-                image = "http://localhost:4000/uploads/"+ response.data.filename
+                image = URL+"/uploads/"+ response.data.filename
                 return
             })
 
-            fetch("http://localhost:4000/addproduct", {
+            fetch(URL+"/addproduct", {
                 method : "post", 
                 headers : { 'Content-Type' : 'application/json'},
                 body : JSON.stringify({name,price,image})

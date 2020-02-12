@@ -6,13 +6,14 @@ function Orders() {
 
     const [orders, setOrders] = useState([])
     const [otp, setOtp] = useState({})
+    const URL=process.env.NODE_ENV==="development"?"http://localhost:4000":"/backend";
     
     useEffect(() => {
         getPendingProducts()
     },[])
 
     const getPendingProducts = () => {
-        fetch("http://localhost:4000/getpendingorders", {
+        fetch(URL+"/getpendingorders", {
             method : 'get'
         })
         .then(res => res.json())
@@ -20,7 +21,7 @@ function Orders() {
     }
 
     const resolveBill = (orderId) => {
-        fetch("http://localhost:4000/resolveorder", {
+        fetch(URL+"/resolveorder", {
             method : 'post',
             headers : {'Content-Type':'application/json'},
             body : JSON.stringify({

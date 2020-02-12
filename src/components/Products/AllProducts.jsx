@@ -8,13 +8,14 @@ function AllProducts() {
     // eslint-disable-next-line
     const [ products, setProducts ] = useState([]) 
     const [dataSource, setDataSource]=useState([])
+    const URL=process.env.NODE_ENV==="development"?"http://localhost:4000":"/backend";
 
     useEffect(() => {
         fetchAllProducts()
     },[])
 
     const fetchAllProducts = () => {
-        fetch("http://localhost:4000/allproducts", {
+        fetch(URL+"/allproducts", {
             method : 'get',
         })
         .then(res => res.json())
@@ -38,7 +39,7 @@ function AllProducts() {
     },[products])
 
     const removeProduct = id => {
-        fetch("http://localhost:4000/deleteproduct", {
+        fetch(URL+"/deleteproduct", {
             method : "delete",
             headers : {
                 'Content-Type' : 'application/json'

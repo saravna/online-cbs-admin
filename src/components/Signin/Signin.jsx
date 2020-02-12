@@ -5,12 +5,13 @@ import { Form, Icon, Input, Button, notification } from 'antd';
 function Signin(props) {
     const [mail,setMail] = useState('')
     const [password,setPassword] = useState('')
+    const URL=process.env.NODE_ENV==="development"?"http://localhost:4000":"/backend";
 
     const handleSubmit = () => {
         if(mail.trim().length===0 || password.trim().length===0)
             return
         
-        fetch("http://localhost:4000/signin",{
+        fetch(URL+"/signin",{
             method : "post",
             headers : {
                 'Content-Type' : 'application/json'

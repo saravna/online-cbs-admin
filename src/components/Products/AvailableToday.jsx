@@ -7,6 +7,7 @@ import {
 function AvailableToday() {
     const [ products, setProducts ] = useState([]) 
     const [ dataSource, setDataSource] = useState([])
+    const URL=process.env.NODE_ENV==="development"?"http://localhost:4000":"/backend";
 
     useEffect(() => {
         var data = products.map((product,i) => {
@@ -62,7 +63,7 @@ function AvailableToday() {
             }
         })
         // console.log(bodyData)   
-        fetch("http://localhost:4000/updatequantity", {
+        fetch(URL+"/updatequantity", {
             method : "put",
             headers : { 'Content-Type' : 'application/json'},
             body : JSON.stringify({newQuantity : bodyData})
@@ -80,7 +81,7 @@ function AvailableToday() {
 
     const fetchAllMenu = () => {
         console.log("Hit")
-        fetch("http://localhost:4000/allproductswithquantity", {
+        fetch(URL+"/allproductswithquantity", {
             method : 'get',
         })
         .then(res => res.json())

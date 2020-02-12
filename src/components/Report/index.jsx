@@ -9,11 +9,12 @@ function Report(props) {
     const [endDate, setEndDate] = useState(null)
     const [reportData, setReportData] = useState([])
     const [collection, setCollection] = useState(0)
+    const URL=process.env.NODE_ENV==="development"?"http://localhost:4000":"/backend";
 
     const handleSubmit = () => {
         setCollection(0)
         setReportData([])
-        fetch("http://localhost:4000/report", {
+        fetch(URL+"/report", {
             method : 'post',
             headers : {'Content-Type' : 'application/json'},
             body : JSON.stringify({
