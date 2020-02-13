@@ -39,7 +39,7 @@ function AvailableToday() {
         {
             title : 'New Quantity',
             render : (data) => {
-                return <Input onChange={(e)=>handleQuantityChange(e.target.value,data.key)}  />
+                return <Input value={} onChange={(e)=>handleQuantityChange(e.target.value,data.key)}  />
             },
             width : '30%'
         }

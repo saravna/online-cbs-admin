@@ -1,11 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-var http_port = 3000;
+var http_port = 3001;
 if (process.env.NODE_ENV === 'production')
-  http_port = 3000;
+  http_port = 3001;
 else if (process.env.NODE_ENV === 'test')
-  http_port = 3000;
+  http_port = 3001;
 const path = require('path');
 class Server {
   constructor() {

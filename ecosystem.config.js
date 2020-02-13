@@ -24,7 +24,7 @@ module.exports = {
       ref  : 'origin/master',
       repo : 'https://github.com/saravna/online-cbs-admin.git',
       path : '/var/www/admin',
-      'post-deploy' : 'sudo npm install && sudo npm run build && pm2 reload ecosystem.config.js --env production'
+      'post-deploy' : 'export PORT=3001 && sudo npm install && sudo npm run build && pm2 reload ecosystem.config.js --env production'
     }
   }
 };
