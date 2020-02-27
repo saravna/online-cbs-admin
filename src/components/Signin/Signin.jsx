@@ -40,7 +40,7 @@ function Signin(props) {
         <div>
             <h1 style={{fontWeight:"1000", fontSize : "45px"}}>ADMIN SITE</h1>
             <div style={{
-                    width : "30vw",
+                    minWidth : "30vw",
                     backgroundColor:"#9c46ff",
                     padding : "30px",
                     borderRadius:"8px",
