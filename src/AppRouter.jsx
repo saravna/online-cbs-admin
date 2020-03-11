@@ -7,6 +7,7 @@ import AllProducts from './components/Products/AllProducts'
 import AvailableToday from './components/Products/AvailableToday'
 import Orders from './components/Orders'
 import Report from './components/Report'
+import UserManagement from './components/UserManagement'
 
 function AppRouter() {
     return (
@@ -20,6 +21,7 @@ function AppRouter() {
                     <PrivateRoute path='/availabletoday' component={AvailableToday}/>
                     <PrivateRoute path='/orders' component={Orders}/>
                     <PrivateRoute path='/report' component={Report}/>
+                    <PrivateRoute path='/users' component={UserManagement}/>
                     {/* <PrivateRoute path='/addadmin' component={AddAdmin}/>
                     <PrivateRoute path='/manageusers' component={Users}/> */}
                 </Switch>
