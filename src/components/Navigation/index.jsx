@@ -83,6 +83,12 @@ function Navigation(props) {
                             <span>Report</span>
                         </NavLink>
                     </Menu.Item>
+                    <Menu.Item key="users">
+                        <NavLink to="/users">
+                            <Icon type="user" />
+                            <span>User Management</span>
+                        </NavLink>
+                    </Menu.Item>
                     
                 </Menu>
                 </Sider>

@@ -17,6 +17,20 @@ function UserManagement(props) {
         .then(data => setUsers(data))
     },[])
 
+    const handleBlock = (userId) => {
+        fetch(URL+"/handleblock/"+userId, {
+            method : 'get'
+        })
+        .then(data => {
+            setUsers(users => users.map(user => {
+                // console.log(users)
+                if(user.id === userId)
+                    user.blocked = !user.blocked
+                return user
+            }))
+        })
+    }
+
     const columns = [
         {
             title : "UserId",
@@ -29,11 +43,7 @@ function UserManagement(props) {
         {
             title : "Action",
             dataIndex : 'blocked',
-            render:(blocked)=>{
-                return blocked 
-                ?   <Button>Unblock</Button>
-                :   <Button type="primary">Block</Button>
-            }
+            render:(blocked, data)=>   <Button type={blocked ? "" : "primary"} onClick={()=>handleBlock(data.id)}>{blocked ? "Unblock" : "Block"}</Button>
         }
     ]
     
