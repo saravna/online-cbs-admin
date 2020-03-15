@@ -41,6 +41,10 @@ function UserManagement(props) {
             dataIndex : "mail"
         },
         {
+            title : "Phone Number",
+            dataIndex : "mobile"
+        },
+        {
             title : "Action",
             dataIndex : 'blocked',
             render:(blocked, data)=>   <Button type={blocked ? "" : "primary"} onClick={()=>handleBlock(data.id)}>{blocked ? "Unblock" : "Block"}</Button>
