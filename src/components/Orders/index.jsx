@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { Input, Button, Table } from 'antd'
+import { Input, Button, Table, PageHeader } from 'antd'
 
 
 function Orders() {
 
     const [orders, setOrders] = useState([])
     const [otp, setOtp] = useState({})
+    const [search, setSearch] = useState('')
     const URL=process.env.NODE_ENV==="development"?"http://localhost:4000":"/backend";
     
     useEffect(() => {
@@ -113,8 +114,15 @@ function Orders() {
 
     return (
         <div>
+            <PageHeader 
+                title="Manage Orders"
+                extra={<Button onClick={getPendingProducts} type="primary">Reload Orders</Button>}
+            />
+            <div style={{width: "250px"}}>
+                <Input placeholder="Search Order Id" onChange={(e) => setSearch(e.target.value)} value={search}/>
+            </div>
             <Table
-                dataSource = {orders}
+                dataSource = {orders.filter(order => `${order.id}`.includes(search))}
                 columns={columns}
                 expandRowByClick={true}
                 expandedRowRender={record => <Table pagination={false} columns={nestedColumns} dataSource={record.orderItems}/>}

@@ -56,9 +56,9 @@ function Report(props) {
             <PageHeader
                 title = "Report"
             />
-            <DatePicker placeholder="Start Date" onChange={(e,f)=>setStartDate(f)}/>
-            <DatePicker placeholder="End Date" onChange={(e,f)=> setEndDate(f)}/>
-            <Button onClick={handleSubmit}>Submit</Button>
+            <DatePicker style={{margin: "0px 5px"}} placeholder="Start Date" onChange={(e,f)=>setStartDate(f)}/>
+            <DatePicker style={{margin: "0px 5px"}} placeholder="End Date" onChange={(e,f)=> setEndDate(f)}/>
+            <Button style={{margin: "0px 5px"}} onClick={handleSubmit} type="primary">Submit</Button>
             {
                 reportData.length!==0
                 ?   <Table
